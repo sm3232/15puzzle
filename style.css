@@ -1,0 +1,177 @@
+:root {
+  --bg: #14181dff;
+  --fg: white;
+  --solved: #6ede8aff;
+  font-family: sans-serif;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0%;
+    transform: translate(0px, -900px);
+  }
+  100% {
+    opacity: 100%;
+    transform: translate(0px, 0px);
+  }
+}
+html {
+  background-color: var(--bg);
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-timing-function: cubic-bezier(0, 1, 0, 1);
+  height: 100%;
+  overflow: hidden;
+
+/* thank you top answer here https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting */ 
+  
+  -webkit-touch-callout: none;  /* iOS Safari */
+  -webkit-user-select: none;    /* Safari */
+  -khtml-user-select: none;     /* Konqueror HTML */
+  -moz-user-select: none;       /* Old versions of Firefox */
+  -ms-user-select: none;        /* Internet Explorer/Edge */
+  user-select: none;            /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+}
+body { height: 100%; }
+.settingsPanel {
+  z-index: 5;
+  display: inline-block;
+  position: absolute;
+  width: 600px;
+  height: 425px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--bg);
+  filter: drop-shadow(0px 0px 30px);
+  align-items: center;
+}
+@media (max-width: 600px){
+  .settingsPanel {
+    z-index: 5;
+    display: inline-block;
+    position: absolute;
+    width: 98%;
+    height: 425px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--bg);
+    filter: drop-shadow(0px 0px 30px);
+    align-items: center;
+  }
+  #solveSpeed {
+    display: block;
+    margin-right: auto;
+    margin-bottom: 5px;
+  }
+  label {
+    font-size: 0.75em;
+  }
+}
+.check, .num, .slider {
+  align-items: center;
+  text-align: center;
+  color: var(--fg);
+  scale: 1.2;
+  margin-top: 50px;
+}
+#solveSpeed {
+  margin-left: auto;
+}
+#speedLabel {
+  margin-left: 10px;
+  margin-right: auto;
+}
+#gridSizeInput {
+  width: 3em;
+}
+.material-symbols-outlined {
+  position: relative;
+  display: block;
+  color: var(--fg);
+  transition: 0.2s;
+  cursor: pointer;
+  text-align: center;
+  padding: 5px;
+}
+
+.invis { opacity: 0%; }
+#warning {
+  display: grid;
+  position: absolute;
+  left: 50%;
+  top: 13%;
+  transform: translate(-50%);
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  text-align: center;
+  color: yellow;
+  transition: 0.1s;
+  cursor: auto;
+}
+#warningText {
+  color: yellow;
+  cursor: auto;
+}
+#warningSymbol {
+  color: yellow;
+  cursor: auto;
+  margin-bottom: 10px;
+}
+.tooltip {
+  white-space: nowrap;
+  text-align: center;
+  transition: 0.2s;
+  color: var(--fg);
+  opacity: 0%;
+}
+#settingsWheel:hover, #shuffleButton:hover, #solveButton:hover, #warning:hover {
+  .tooltip {
+    opacity: 100%;
+  }
+}
+#controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  top: 20%;
+  position: relative;
+}
+.cbtn { 
+  margin: 0 auto 0 auto; 
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+}
+#gameContainer {
+  display: flex;
+  position: relative;
+  top: 25%;
+}
+#grid {  
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  min-width: 400px;
+  min-height: 400px;
+  margin: 0 auto 0 auto;
+}
+.gridItem {
+  background-color: var(--fg);
+  z-index: 1;
+}
+#empty {
+  z-index: 0;
+  background-color: var(--bg);
+}
+p {
+  display: block;
+  color: var(--bg);
+  font-size: 1.5em;
+  text-align: center;
+  vertical-align: middle;
+}
+

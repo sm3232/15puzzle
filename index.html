@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>15puzzle</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="style.css" rel="stylesheet">
+  <script src="script.js" defer></script>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+
+<body>
+  <div class="invis" id="warning">
+    <span class="material-symbols-outlined" id="warningSymbol">warning</span>
+    <span class="tooltip" id="warningText">This board is unsolvable.</span>
+  </div>
+  <div id="controls">
+    <div class="cbtn" id="settingsWheel">
+      <span class="tooltip">Settings</span>
+      <span class="material-symbols-outlined">Settings</span>
+    </div>
+    <div class="cbtn" id="shuffleButton">
+      <span class="tooltip">Shuffle</span>
+      <span class="material-symbols-outlined">Shuffle</span>
+    </div>
+    <div class="cbtn" id="solveButton">
+      <span class="tooltip">Auto-Solve</span>
+      <span class="material-symbols-outlined">smart_toy</span>
+    </div>
+  </div>
+  <div id="gameContainer">
+    <div id="grid">
+    </div>
+  </div>
+  <span id="settingsPanelWrapper"></span>
+</body>
+
+</html>
