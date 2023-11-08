@@ -275,12 +275,21 @@ settingsButton.addEventListener("click", () => {
       };
   }
 });
+const infoWrapper = document.getElementById("infoPanelWrapper");
+const infoButton = document.getElementById("infoButton");
 let closeSettings = false;
 settingsWrapper.onmouseleave = () => {
   closeSettings = true;
 }
 settingsWrapper.onmouseenter = () => {
   closeSettings = false;
+}
+let closeInfo = false;
+infoWrapper.onmouseleave = () => {
+  closeInfo = true;
+}
+infoWrapper.onmouseenter = () => {
+  closeInfo = false;
 }
 document.onclick = () => {
   if(closeSettings){
@@ -289,7 +298,54 @@ document.onclick = () => {
     document.getElementById("gameContainer").style.filter = "";
     closeSettings = false;
   }
+  if(closeInfo){
+    infoWrapper.className = "";
+    infoWrapper.innerHTML = "";
+    document.getElementById("gameContainer").style.filter = "";
+    closeInfo = false;
+  }
 }
+function getRandomIconName(){
+  icons = [
+    "warning", 
+    "elderly_woman", 
+    "vaping_rooms", 
+    "heart_broken", 
+    "sentiment_dissatisfied", 
+    "mood_bad",
+    "sick",
+    "skull",
+    "flood",
+    "sentiment_frustrated",
+    "sentiment_sad",
+    "auto_towing",
+    "sports_kabaddi",
+  ]
+  return icons[Math.floor(Math.random() * icons.length)];
+}
+infoButton.addEventListener("click", () => {
+  if(infoWrapper.className === "infoPanel"){
+    infoWrapper.className = "";
+    infoWrapper.innerHTML = "";
+    document.getElementById("gameContainer").style.filter = "";
+  } else {
+    infoWrapper.className = "infoPanel";
+    document.getElementById("gameContainer").style.filter = "blur(4px)";
+    infoWrapper.innerHTML = 
+    `
+        <h3>
+          Made with <span class="material-symbols-outlined" id="randomIcon">${getRandomIconName()}</span> by Connor
+        </h3>
+        <a href="https://github.com/sm3232">
+          <img src="github-logo.png"/>
+        </a>
+
+    `
+  }
+
+});
+
+
 // Tile offset from it's solved position
 function getTileOffset(tile){
   const numAsPos = singleToPoint(tile.num - 1);
